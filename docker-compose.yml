@@ -6,4 +6,7 @@ services:
     ports:
       - 127.0.0.1:9080:80
     restart: always
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+
     
