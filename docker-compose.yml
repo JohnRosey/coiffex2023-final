@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  frontend:
+    image: docker-hub.montreal.aniere.fr/coiffex-frontend:latest
+    ports:
+      - 127.0.0.1:9080:80
+    restart: always
+    
