@@ -1,16 +1,16 @@
 <div *ngIf="this.offer !== undefined" id="offer-container">
-    <h1 class="text-4xl font-extrabold dark:text-white">{{this.offer.name}}</h1>
+    <h1 class="text-4xl font-extrabold ">{{this.offer.name}}</h1>
     <div id="offer-details">
         <div id="offer-image-container">
             <img id="offer-image" src="{{this.offer.imageURL}}" alt="Image de l'offre">
         </div>
         <div id="offer-description">
-            <p class="text-xl dark:text-white">{{this.offer.description}}</p>
-            <p class="text-xl dark:text-white">Coiffeur : {{this.offer.hairdresser}}</p>
-            <p class="text-xl dark:text-white">Note : {{"⭐".repeat(offer.note)}}</p>
-            <p class="text-xl dark:text-white">Prix : {{this.offer.price}}$</p>
-            <p class="text-xl dark:text-white">Durée : {{this.offer.duration}} minutes</p>
-            <p class="text-xl dark:text-white">Adresse : {{this.offer.localisation}}</p>
+            <p class="text-xl ">{{this.offer.description}}</p>
+            <p class="text-xl ">Coiffeur : {{this.offer.hairdresser}}</p>
+            <p class="text-xl ">Note : {{"⭐".repeat(offer.note)}}</p>
+            <p class="text-xl ">Prix : {{this.offer.price}}$</p>
+            <p class="text-xl ">Durée : {{this.offer.duration}} minutes</p>
+            <p class="text-xl ">Adresse : {{this.offer.localisation}}</p>
         </div>
     </div>
     <div id="button-container">
@@ -19,6 +19,6 @@
     </div>
 </div>
 <div *ngIf="this.offer == undefined">
-    <h1 text-4xl font-extrabold dark:text-white>Erreur !</h1>
+    <h1 text-4xl font-extrabold >Erreur !</h1>
     <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" routerLinkActive="true" routerLink="/offers">Retour aux offres</a>
 </div>
