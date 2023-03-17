@@ -22,3 +22,26 @@ Compilation du projet
 ```
 ng build
 ```
+
+## Déploiement continu
+
+Nous avons en place le déploiment continu avec un Docker Registry privé hébergé sur le serveur de Quentin. A chaque fois qu'une image est push sur le Docker Registry, le container qui héberge l'application est automatiquement mis à jour.
+
+Tutoriel :
+
+1 - Se connecter au docker registry privé (une fois normalement)
+```
+docker login docker-hub.montreal.aniere.fr
+```
+
+2 - Build l'image docker
+```
+docker build -t docker-hub.montreal.aniere.fr/coiffex/coiffex .
+```
+
+3 - Push l'image sur le docker registry
+```
+docker push docker-hub.montreal.aniere.fr/coiffex/coiffex
+```
+
+Dans les 30 secondes, l'application sera mise à jour.
