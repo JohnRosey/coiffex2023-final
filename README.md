@@ -34,14 +34,13 @@ Tutoriel :
 docker login docker-hub.montreal.aniere.fr
 ```
 
-2 - Build l'image docker
+2 - Build l'image docker (se mettre dans le dossier racine pour le front et dans le dossier backend pour le back)
 ```
-docker build -t docker-hub.montreal.aniere.fr/coiffex/coiffex .
+docker build -t docker-hub.montreal.aniere.fr/coiffex/<frontend OU backend> .
 ```
 
 3 - Push l'image sur le docker registry
 ```
-docker push docker-hub.montreal.aniere.fr/coiffex/coiffex
+docker push docker-hub.montreal.aniere.fr/coiffex/<frontend OU backend>
 ```
-
-Dans les 30 secondes, l'application sera mise à jour.
+Dans les 30 secondes, l'application sera mise à jour sur le serveur à l'adresse https://coiffex.store .
