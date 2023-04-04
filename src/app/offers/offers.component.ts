@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Route, Router } from '@angular/router';
 import { Offer } from '../models/Offer';
 import { OffersService } from '../offers.service';
 
@@ -8,8 +8,21 @@ import { OffersService } from '../offers.service';
   templateUrl: './offers.component.html',
   styleUrls: ['./offers.component.css']
 })
-export class OffersComponent {
 
-  constructor(public service: OffersService) {}
+
+export class OffersComponent {
+  
+  offerList?: Offer[];
+
+
+  constructor(
+    private router: Router,
+    private offerservice: OffersService)
+  {}
+
+  ngOnInit(){
+    this.offerservice.getOffersList()
+      .subscribe(offerList => this.offerList = offerList);
+  }
 
 }
