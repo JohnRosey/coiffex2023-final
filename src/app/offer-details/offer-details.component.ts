@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Offer } from '../models/Offer';
 import { OffersService } from '../offers.service';
 
@@ -9,17 +8,27 @@ import { OffersService } from '../offers.service';
   templateUrl: './offer-details.component.html',
   styleUrls: ['./offer-details.component.css']
 })
-export class OfferDetailsComponent {
+export class OfferDetailsComponent implements OnInit {
 
-  public offer: Offer | undefined;
+  offerList?: Offer[];
+  offer?: Offer;
 
-  constructor(public service: OffersService, public route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private offerService: OffersService ) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      let offerIndex: number = params['id'];
-      this.offer = this.service.getOfferById(offerIndex);
-    });
+
+    const offerId: string|null = this.route.snapshot.paramMap.get('id');
+
+    if(offerId) {
+      this.offerService.getOfferById(+offerId)
+        .subscribe(offer => this.offer = offer);
+    }
+
   }
+
+
 }

@@ -1,7 +1,7 @@
 <h1 class="text-4xl font-extrabold ">Offres disponibles dans votre région :</h1>
 <div id="center-container">
     <div id="offers-container">
-        <div class="offer" *ngFor="let offer of this.service.getOffers();">
+        <div class="offer" *ngFor="let offer of offerList ">
             <div class="offer-header">
                 <h2 class="text-2xl font-bold">{{offer.name}}</h2>
                 <img class="offer-image" src="{{offer.imageURL}}" alt="Image de l'offre">
