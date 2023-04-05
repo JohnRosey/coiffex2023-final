@@ -1,4 +1,4 @@
-package com.coiffex.backend;
+package com.coiffex.backend.controllers;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,5 +20,5 @@ public class UserController {
     public String register(User user) {
         return user.getName();
     }
-    
+
 }

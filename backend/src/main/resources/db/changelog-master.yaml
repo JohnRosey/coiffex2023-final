@@ -2,6 +2,3 @@ databaseChangeLog:
   - includeAll:
       path: ./changelog/
       relativeToChangelogFile: true
-
-liquibase:
-  changeLog: classpath:/db/changelog/db.changelog-master.xml
