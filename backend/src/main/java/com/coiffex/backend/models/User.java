@@ -3,6 +3,8 @@ package com.coiffex.backend.models;
 import lombok.Data;
 import javax.persistence.*;
 
+
+
 @Data
 @Entity
 @Table(name = "users")
