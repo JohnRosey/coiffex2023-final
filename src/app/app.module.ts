@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { OffersComponent } from './offers/offers.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { HttpClientModule } from '@angular/common/http';
-import { InMemoryDataService } from './in-memory-data.service';
+import { ReservationConfirmedComponent } from './reservation-confirmed/reservation-confirmed.component';
 
 
 @NgModule({
@@ -25,11 +25,11 @@ import { InMemoryDataService } from './in-memory-data.service';
     LoginComponent,
     OffersComponent,
     OfferDetailsComponent,
+    ReservationConfirmedComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     AppRoutingModule,
     ReactiveFormsModule
   ],
