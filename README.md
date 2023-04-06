@@ -6,6 +6,12 @@ Réalisé par Winner MAZONZIKA PINDI, Ismael GANSONRE et Quentin ANIERE
 
 Coiffex est une plateforme web innovante de services de coiffure à domicile. Nous permettons aux clients de bénéficier d'une expérience de coiffure de qualité supérieure, sans avoir à se déplacer en salon. Nos coiffeurs qualifiés se rendent chez nos clients pour fournir des prestations de coiffure sur demande, à une date et à un endroit de leur choix.
 
+## JALON2
+
+- Ajout des fonctions client coté front
+- Stockage des données dans une mock API
+- Mise en production sur https://coiffex.store/ (Serveur linux + docker)
+
 ## Lancement du projet
 
 Installation des dépandances
