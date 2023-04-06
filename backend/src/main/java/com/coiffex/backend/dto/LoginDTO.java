@@ -1,7 +1,6 @@
-package com.coiffex.backend.DTO;
+package com.coiffex.backend.dto;
 
 import lombok.Data;
-
 
 @Data
 public class LoginDTO {
