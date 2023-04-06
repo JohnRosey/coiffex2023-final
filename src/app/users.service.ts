@@ -9,6 +9,8 @@ export class UsersService {
 
   private users: User[];
 
+  private currentUser: User | undefined;
+
   constructor() {
     this.users = [];
 
@@ -44,8 +46,13 @@ export class UsersService {
   public login(username: string, password: string): User | boolean {
     const user = this.users.find(user => user.username == username);
     if (user && user.passwordHash == password) {
+      this.currentUser = user;
       return user;
     }
     return false;
+  }
+
+  public getCurrentUser(): User | undefined {
+    return this.currentUser;
   }
 }

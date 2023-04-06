@@ -8,13 +8,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ReservationConfirmedComponent } from './reservation-confirmed/reservation-confirmed.component';
 
+import { AuthGuard } from './auth-guard';
+
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'offers', component:OffersComponent},
   {path:'offers/:id', component:OfferDetailsComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent}, 
-  {path: 'reservation-ok/:prestation', component:ReservationConfirmedComponent}
+  {path: 'reservation-ok/:prestation', component:ReservationConfirmedComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
