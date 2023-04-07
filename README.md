@@ -1,6 +1,6 @@
 # Coiffex
 
-Réalisé par Winner MAZONZIKA PINDI, Ismael GANSONRE et Quentin ANIERE 
+Réalisé par Winner MAZONZIKA PINDI, Ismael GANSONRE, Quentin ANIERE  et Mouhamed DIOP
 
 ##  Description
 
