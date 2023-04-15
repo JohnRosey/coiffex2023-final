@@ -6,16 +6,15 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="quentin">
-      <validCheckSum>8:35f2b483c5091b19dd1e05c17809b66f</validCheckSum>
+      <validCheckSum>8:ac4c97e60cff37a5324faa7e5422b6a6</validCheckSum>
         <createTable tableName="users">
-            <column name="id" type="bigint">
+            <column name="id" type="serial">
                <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar"/>
-            <column name="email_adress" type="varchar"/>
+            <column name="username" type="varchar"/>
+            <column name="email" type="varchar"/>
             <column name="password" type="varchar"/>
-            <column name="location" type="varchar"/>
-            <column name="account_type" type="varchar"/>
+            <column name="creation_date" type="date"/>
         </createTable>
     </changeSet>
 

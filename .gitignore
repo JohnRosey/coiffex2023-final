@@ -42,4 +42,8 @@ testem.log
 Thumbs.db
 */*.~*
 
-mongo-db-data/
+postgres-data
+
+*.class 
+
+*/target/*
