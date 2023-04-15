@@ -12,33 +12,23 @@ services:
   backend:
     image: docker-hub.montreal.aniere.fr/coiffex/backend:latest
     restart: always
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres-db:5432/coiffex
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=mdp
     ports:
       - 127.0.0.1:9081:8080
     labels:
       - com.centurylinklabs.watchtower.enable=true
     depends_on:
-      - mongo-db
+      - postgres-db
 
-  mongo-db:
-    image: mongo:latest
+  postgres-db:
+    image: postgres:latest
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: coiffex2023!
-    ports:
-      - 127.0.0.1:27017:27017
     volumes:
-      - ./mongo-db-data:/data/db
-      
-  mongo-express:
-    image: mongo-express
-    restart: always
-    ports:
-      - 127.0.0.1:8081:8081
+      - ./postgres-data:/var/lib/postgresql/data
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: coiffex2023!
-      ME_CONFIG_MONGODB_SERVER: mongo-db
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
-    depends_on:
-      - mongo-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mdp
+      POSTGRES_DB: coiffex   

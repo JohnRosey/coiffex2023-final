@@ -1,10 +1,10 @@
-package com.coiffex.backend;
+package com.coiffex.example1.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
