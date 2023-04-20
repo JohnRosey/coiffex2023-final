@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, map } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { Offer } from './Offer';
+import { Offer } from '../models/Offer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OffersService {
 
-  private apiURL = 'https://mocki.io/v1/19b7550f-ce6e-4cd1-b2b3-eee7d84bc911'; // URL de l'API externe
+  // URL de l'API externe
+  private apiURL = 'https://mocki.io/v1/19b7550f-ce6e-4cd1-b2b3-eee7d84bc911'; 
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,7 @@ export class OffersService {
     );
   }
 
+  /** Méthode permettant de récupérer une offre par son id */
   getOfferById(offerId: number): Observable<Offer> {
     return this.http.get<Offer[]>(`${this.apiURL}`).pipe(
       map((offers: any) => offers.find((offer: any) => offer.id === offerId)),

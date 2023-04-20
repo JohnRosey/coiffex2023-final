@@ -1,3 +1,4 @@
+// Description: Offer model
 export interface Offer {
     id: number;
     name: string;
