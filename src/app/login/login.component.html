@@ -16,6 +16,8 @@
       <div class="flex items-center justify-between">
         <input  type="submit" (click)="this.login()" [disabled]="!this.form.valid"  [ngClass]="{'disabled:opacity-25': !this.form.valid }" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" value="Connexion">
       </div>
+      <br>
+      <span>Pas de compte ? <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="/register">Inscrivez-vous</a></span>
     </form>
   </div>
 </div>
