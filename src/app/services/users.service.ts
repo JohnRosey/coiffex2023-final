@@ -66,4 +66,12 @@ export class UsersService {
   public getCurrentUser(): User | undefined {
     return this.currentUser;
   }
+
+  public logout(): void {
+    this.currentUser = undefined;
+  }
+
+  public isLoggedIn(): boolean {
+    return this.currentUser != undefined;
+  }
 }

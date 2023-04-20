@@ -7,6 +7,7 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ReservationConfirmedComponent } from './reservation-confirmed/reservation-confirmed.component';
+import { LogoutComponent } from './logout/logout.component';
 
 import { AuthGuard } from './auth-guard';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'offers/:id', component:OfferDetailsComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent}, 
+  {path:'logout', component:LogoutComponent, canActivate: [AuthGuard]},
   {path: 'reservation-ok/:prestation', component:ReservationConfirmedComponent, canActivate: [AuthGuard]}
 ];
 
