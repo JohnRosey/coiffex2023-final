@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../models/User';
 import { UsersService } from '../users.service';
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-register',
@@ -20,12 +21,12 @@ export class RegisterComponent {
     localisation: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
-  constructor(public service: UsersService, public router: Router) { }
+  constructor( public router: Router,private authservice :AuthService) { }
 
   public register(): void {
     if(this.form.valid) {
-      
-      let newUser: User = {
+
+      const newUser: User = {
         id: Math.random(),
         username: this.form.value.username,
         email: this.form.value.email,
@@ -34,11 +35,17 @@ export class RegisterComponent {
         offers: [],
         reservations: []
       };
-  
-      this.service.addUser(newUser);
+
+      this.authservice.register(newUser.username,newUser.email,newUser.passwordHash).subscribe(data=>{
       alert('Inscription réussie ! Bienvenue ' + newUser.username + ' !');
       this.router.navigate(['/login']);
+    },
+    (error)=>{
+      console.log(error);
+      alert('Inscription échouée !');
     }
-  }
-
+    );
 }
+}
+}
+
