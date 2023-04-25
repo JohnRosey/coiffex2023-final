@@ -14,6 +14,7 @@ import { OffersComponent } from './offers/offers.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationConfirmedComponent } from './reservation-confirmed/reservation-confirmed.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ReservationConfirmedComponent } from './reservation-confirmed/reservati
     OffersComponent,
     OfferDetailsComponent,
     ReservationConfirmedComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

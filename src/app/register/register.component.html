@@ -59,6 +59,8 @@
         <button id="submit" type="submit" [disabled]="!this.form.valid"  [ngClass]="{'disabled:opacity-25': !this.form.valid } "class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             S'inscrire
         </button>
+        <br>
+        <span>Déjà inscrit ? <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="/login">Connectez vous</a></span>
         <div *ngIf="this.form.controls['username'].errors">
             <div *ngIf="this.form.controls['username'].dirty && form.controls['username']!.errors['minlength']" class="text-red-500">
                 Le nom d'utilisateur doit contenir au moins 3 caractères.    
@@ -79,5 +81,6 @@
                 La localisation doit contenir au moins 3 caractères.
             </div>
         </div>
+        
     </form>
 </div>

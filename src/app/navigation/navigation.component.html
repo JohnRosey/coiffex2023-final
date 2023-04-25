@@ -8,8 +8,9 @@
             <ul>
                 <li><a routeLinkActive="true" [routerLink]="'/'">Accueil</a></li>
                 <li><a routeLinkActive="true" [routerLink]="'/offers'">Offres</a></li>
-                <li><a routeLinkActive="true" [routerLink]="'/register'">Inscription</a></li>
-                <li><a routeLinkActive="true" [routerLink]="'/login'">Connexion</a></li>
+                <li *ngIf="!this.isLoggedIn()"><a routeLinkActive="true" [routerLink]="'/register'" >Inscription</a></li>
+                <li *ngIf="!this.isLoggedIn()"><a routeLinkActive="true" [routerLink]="'/login'">Connexion</a></li>
+                <li *ngIf="this.isLoggedIn()"><a routeLinkActive="true" [routerLink]="'/logout'">Déconnexion</a></li>
             </ul>
         </div>
     </nav>
