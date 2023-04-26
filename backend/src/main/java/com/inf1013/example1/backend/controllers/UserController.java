@@ -1,20 +1,21 @@
 package com.inf1013.example1.backend.controllers;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.inf1013.example1.backend.dto.UserLogin;
 import com.inf1013.example1.backend.dto.UserRegistration;
 import com.inf1013.example1.backend.services.implementation.AuthentificationService;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+
+@CrossOrigin(origins = "http://localhost:4200")
 
 /**
  * UserController
  * Handles the user registration and login
  */
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -29,14 +30,12 @@ public class UserController {
      * @return String message
      */
     @PostMapping(value="/register")
-    public String register(@RequestParam(value="username") String username,
-                           @RequestParam(value="email") String email,
-                           @RequestParam(value="password") String password) {
-        
-        UserRegistration user = new UserRegistration();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPassword(password);
+    public String register(@RequestBody UserRegistration user) {
+
+       user.setUsername(user.getUsername());
+        user.setEmail(user.getEmail());
+        user.setPassword(user.getPassword());
+
 
         return authentificationService.createUser(user);
     }
@@ -48,12 +47,10 @@ public class UserController {
      * @return
      */
     @PostMapping(value="/login")
-    public String login(@RequestParam(value="username") String username,
-                        @RequestParam(value="password") String password) {
-        
-        UserLogin user = new UserLogin();
-        user.setUsername(username);
-        user.setPassword(password);
+    public String login(@RequestBody UserLogin user) {
+       user.setUsername(user.getUsername());
+        user.setPassword(user.getPassword());
+
 
         return authentificationService.login(user);
     }

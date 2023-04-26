@@ -31,7 +31,6 @@ export class OffersService {
       catchError((error) => this.handleError(error, undefined))
     );
   }
-  
   /** Méthode pour la gestion d'erreur */
   private handleError(error: Error, errorValue: any) {
     console.error(error);

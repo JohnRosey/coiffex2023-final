@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,10 @@ export class LoginComponent {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
+
+  constructor(public router :Router,public service: UsersService, private authservice:AuthService) { }
   
   //Injection du service UsersService et du Router
-  constructor(public service: UsersService, public router: Router ) { }
 
   public login(): void {
 
@@ -27,15 +29,14 @@ export class LoginComponent {
       const username = this.form.get('username')?.value;
       const password = this.form.get('password')?.value;
 
-      const user = this.service.login(username, password);
+      this.authservice.login(username,password).subscribe(data=>{
+        console.log(data);
+          this.router.navigate(['/offers']);
+      },
+      (error)=>{
+        console.log(error);
 
-      if (user) {
-        alert('Connexion réussie ! Bienvenue ' + username + ' ');
-        this.router.navigate(['/offers']);
-
-      } else {
-        alert('Connexion échouée');
+      });
       }
     }
-  }
 }

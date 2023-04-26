@@ -1,4 +1,4 @@
-<div *ngIf="offer" id="offer-container">
+<div *ngIf="offer" id="offer-container" class="glass-effect">
     <h1 class="text-4xl font-extrabold ">{{offer.name}}</h1>
     <div id="offer-details">
         <div id="offer-image-container">
@@ -18,7 +18,7 @@
         <a id="button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" routerLinkActive="true" routerLink="/offers">Retour aux offres</a>
     </div>
 </div>
-<div *ngIf="this.offer == undefined">
+<div *ngIf="this.offer == undefined" class="glass-effect">
     <h1 text-4xl font-extrabold >Chargement...</h1>
     <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" routerLinkActive="true" routerLink="/offers">Retour aux offres</a>
 </div>

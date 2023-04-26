@@ -29,3 +29,18 @@
     width: 25vh;
     object-fit: cover;
 }
+@keyframes custom-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 0.5;
+  }
+  66.66% {
+    opacity: 1;
+  }
+}
+
+.animate-custom-pulse {
+  animation: custom-pulse 3s linear;
+}
