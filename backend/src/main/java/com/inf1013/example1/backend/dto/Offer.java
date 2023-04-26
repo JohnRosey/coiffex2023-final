@@ -10,6 +10,6 @@ public class Offer {
     private Long hairdresserId;
 
     private int duration;
-
+    
     private String location = "";
 }

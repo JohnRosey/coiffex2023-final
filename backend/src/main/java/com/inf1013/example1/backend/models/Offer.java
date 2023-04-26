@@ -15,17 +15,35 @@ public class Offer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Auto-incremented user id
+    private Long id; // Auto-incremented offer id
 
     private String title = "";
+    private String description = "";
     
     private Long hairdresserId;
 
     private int grade;
+    private int price;
     private int duration;
 
+    private String imageUrl = "";
     private String location = "";
 
     private final LocalDateTime creationDate = LocalDateTime.now(); 
     // The date when the offer was created
+
+    public String toJson() {
+        return "{" +
+            "\"id\":" + id + "," +
+            "\"title\":\"" + title + "\"," +
+            "\"description\":\"" + description + "\"," +
+            "\"hairdresser\":" + "\"John Doe\"" + "," +
+            "\"grade\":" + grade + "," +
+            "\"price\":" + price + "," +
+            "\"duration\":" + duration + "," +
+            "\"imageURL\":\"" + imageUrl + "\"," +
+            "\"location\":\"" + location + "\"," +
+            "\"creationDate\":\"" + creationDate + "\"" +
+        "}";
+    }
 }

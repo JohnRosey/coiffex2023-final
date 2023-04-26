@@ -3,10 +3,10 @@ export interface Offer {
     id: number;
     name: string;
     hairdresser: string;
-    note: number;
+    grade: number;
     description: string;
     imageURL: string;
     duration: number;
     price: number;
-    localisation: string;
+    location: string;
 }
