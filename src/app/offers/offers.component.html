@@ -1,24 +1,24 @@
-<h1 class="text-4xl font-extrabold ">Offres disponibles dans votre région :</h1>
-<div id="center-container">
-    <div id="offers-container">
-        <div class="offer" *ngFor="let offer of offerList ">
-            <div class="offer-header">
-                <h2 class="text-2xl font-bold">{{offer.name}}</h2>
-                <img class="offer-image" src="{{offer.imageURL}}" alt="Image de l'offre">
-            </div>
-            <div class="offer-body">
-                <p class="text-xl">Prix : {{offer.price}}$</p>
-                <p class="text-xl">Durée : {{offer.duration}} minutes</p>
-                <p class="text-xl">Adresse : {{offer.localisation}}</p>
-            </div>
-            <div class="offer-footer">
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                            routerLinkActive="true"
-                            [routerLink]="'/offers/' + offer.id"
-                    >
-                            Détails
-                    </button>
-            </div>
-        </div>
+<h1 class="text-4xl font-extrabold mb-8 text-center animate-bounce">Offres disponibles dans votre région :</h1>
+<div id="center-container" class="w-full flex justify-center">
+  <div id="offers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="offer bg-white rounded-lg shadow-lg p-4 animate-custom-pulse" *ngFor="let offer of offerList">
+      <div class="offer-header">
+        <h2 class="text-2xl font-bold mb-4">{{offer.name}}</h2>
+        <img class="offer-image w-full h-48 object-cover rounded transform hover:scale-110 transition-all duration-300" src="{{offer.imageURL}}" alt="Image de l'offre">
+      </div>
+      <div class="offer-body mt-4">
+        <p class="text-xl mb-2">Prix : {{offer.price}}$</p>
+        <p class="text-xl mb-2">Durée : {{offer.duration}} minutes</p>
+        <p class="text-xl mb-2">Adresse : {{offer.localisation}}</p>
+      </div>
+      <div class="offer-footer mt-4">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full"
+                routerLinkActive="true"
+                [routerLink]="'/offers/' + offer.id"
+        >
+          Détails
+        </button>
+      </div>
     </div>
+  </div>
 </div>
