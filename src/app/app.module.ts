@@ -14,11 +14,15 @@ import { OffersComponent } from './offers/offers.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationConfirmedComponent } from './reservation-confirmed/reservation-confirmed.component';
+
 import {NgOptimizedImage} from "@angular/common";
 import { TeamComponent } from './team/team.component';
 import { CarousselComponent } from './caroussel/caroussel.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
+
+import { LogoutComponent } from './logout/logout.component';
+
 
 
 @NgModule({
@@ -35,6 +39,8 @@ import { FooterComponent } from './footer/footer.component';
     CarousselComponent,
     BodyComponent,
     FooterComponent,
+
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
