@@ -6,7 +6,11 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="quentin">
-      <validCheckSum>8:ac4c97e60cff37a5324faa7e5422b6a6</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+          <not>
+              <tableExists tableName="users"/>
+          </not>
+        </preConditions>
         <createTable tableName="users">
             <column name="id" type="serial">
                <constraints primaryKey="true"/>
@@ -17,5 +21,27 @@
             <column name="creation_date" type="date"/>
         </createTable>
     </changeSet>
-
+    <changeSet id="2" author="quentin">
+        <preConditions onFail="MARK_RAN">
+          <not>
+              <tableExists tableName="offers"/>
+          </not>
+        </preConditions>
+        <createTable tableName="offers">
+            <column name="id" type="serial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="varchar"/>
+            <column name="description" type="varchar"/>
+            <column name="hairdresser_id" type="serial">
+                <constraints nullable="false" foreignKeyName="fk_hairdresse_id" references="users(id)"/>
+            </column>
+            <column name="grade" type="int"/>
+            <column name="price" type="int"/>
+            <column name="duration" type="int"/>
+            <column name="image_url" type="varchar"/>
+             <column name="location" type="varchar"/>
+             <column name="creation_date" type="date"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

@@ -47,3 +47,4 @@ postgres-data
 *.class 
 
 */target/*
+backend/.env
