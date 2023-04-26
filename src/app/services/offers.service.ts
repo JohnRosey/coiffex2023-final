@@ -11,7 +11,7 @@ import { Offer } from '../models/Offer';
 export class OffersService {
 
   // URL de l'API externe
-  private apiURL = 'https://mocki.io/v1/19b7550f-ce6e-4cd1-b2b3-eee7d84bc911'; 
+  private apiURL = 'https://coiffex.store/api/offer/all'; 
 
   constructor(private http: HttpClient) { }
 
