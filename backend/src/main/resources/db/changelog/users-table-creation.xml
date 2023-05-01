@@ -6,6 +6,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="quentin">
+        <comment>Adding users table</comment>
+        <validCheckSum>ANY</validCheckSum>
         <preConditions onFail="MARK_RAN">
           <not>
               <tableExists tableName="users"/>
@@ -22,6 +24,8 @@
         </createTable>
     </changeSet>
     <changeSet id="2" author="quentin">
+        <comment>Adding offers table</comment>
+        <validCheckSum>ANY</validCheckSum>
         <preConditions onFail="MARK_RAN">
           <not>
               <tableExists tableName="offers"/>
@@ -34,7 +38,7 @@
             <column name="title" type="varchar"/>
             <column name="description" type="varchar"/>
             <column name="hairdresser_id" type="serial">
-                <constraints nullable="false" foreignKeyName="fk_hairdresse_id" references="users(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_hairdresser_id" references="users(id)"/>
             </column>
             <column name="grade" type="int"/>
             <column name="price" type="int"/>
@@ -43,5 +47,20 @@
              <column name="location" type="varchar"/>
              <column name="creation_date" type="date"/>
         </createTable>
+    </changeSet>
+    <changeSet id="3" author="quentin">
+        <comment>Adding account_type column to users table</comment>
+        <validCheckSum>ANY</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="account_type" />
+            </not>
+        </preConditions>
+        <addColumn tableName="users">
+            <column name="account_type" type="varchar"/>
+        </addColumn>
+        <update tableName="users">
+            <column name="account_type" value="user"/>
+        </update>
     </changeSet>
 </databaseChangeLog>

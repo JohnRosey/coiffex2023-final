@@ -25,4 +25,6 @@ public class User {
 
     private final LocalDateTime creationDate = LocalDateTime.now(); 
     // The date when the user was created
+
+    private String accountType = "";
 }
