@@ -30,12 +30,17 @@ public class UserController {
      * @return String message
      */
     @PostMapping(value="/register")
-    public String register(@RequestBody UserRegistration user) {
+    public String register(@RequestParam(value="username") String username,
+                           @RequestParam(value="email") String email,
+                           @RequestParam(value="password") String password,
+                           @RequestParam(value="accountType") String accountType) {
 
-       user.setUsername(user.getUsername());
-        user.setEmail(user.getEmail());
-        user.setPassword(user.getPassword());
-
+        UserRegistration user = new UserRegistration();
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setAccountType(accountType);
+            
 
         return authentificationService.createUser(user);
     }
@@ -47,10 +52,12 @@ public class UserController {
      * @return
      */
     @PostMapping(value="/login")
-    public String login(@RequestBody UserLogin user) {
-       user.setUsername(user.getUsername());
-        user.setPassword(user.getPassword());
+    public String login(@RequestParam(value="username") String username,
+                        @RequestParam(value="password") String password) {
 
+        UserLogin user = new UserLogin();
+        user.setUsername(username);
+        user.setPassword(password);
 
         return authentificationService.login(user);
     }

@@ -31,6 +31,7 @@ public class AuthentificationService implements AuthentificationServiceInterface
         user.setUsername(userRegistration.getUsername());
         user.setEmail(userRegistration.getEmail());
         user.setPassword(HashingService.hashPassword(userRegistration.getPassword()));
+        user.setAccountType(userRegistration.getAccountType());
         userRepository.save(user);
         
         return "User created successfully. Welcome " + userRegistration.getUsername() + " !";

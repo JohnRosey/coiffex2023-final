@@ -1,6 +1,7 @@
 package com.inf1013.example1.backend.repositories;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.inf1013.example1.backend.models.User;
 
@@ -30,5 +31,5 @@ public interface UserRepository extends CrudRepository<User, String> {
      * @param username The user username
      * @return The user with the given username
      */
-    Optional<User> findUserByUsername(String username);
+    Optional<User> findUserByUsername(@PathVariable String username);
 }

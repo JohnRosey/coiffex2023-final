@@ -6,7 +6,6 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="quentin">
-        <comment>Adding users table</comment>
         <validCheckSum>ANY</validCheckSum>
         <preConditions onFail="MARK_RAN">
           <not>
@@ -24,7 +23,6 @@
         </createTable>
     </changeSet>
     <changeSet id="2" author="quentin">
-        <comment>Adding offers table</comment>
         <validCheckSum>ANY</validCheckSum>
         <preConditions onFail="MARK_RAN">
           <not>
@@ -49,7 +47,6 @@
         </createTable>
     </changeSet>
     <changeSet id="3" author="quentin">
-        <comment>Adding account_type column to users table</comment>
         <validCheckSum>ANY</validCheckSum>
         <preConditions onFail="MARK_RAN">
             <not>
@@ -60,7 +57,7 @@
             <column name="account_type" type="varchar"/>
         </addColumn>
         <update tableName="users">
-            <column name="account_type" value="user"/>
+            <column name="account_type" value="client"/>
         </update>
     </changeSet>
 </databaseChangeLog>
