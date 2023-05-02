@@ -11,9 +11,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 @ComponentScan
 @EnableAutoConfiguration
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplication
+{
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+  {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
