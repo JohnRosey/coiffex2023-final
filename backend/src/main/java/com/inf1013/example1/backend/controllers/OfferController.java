@@ -22,6 +22,7 @@ public class OfferController {
 
         int offerCount = 0;
         for (Offer offer : offerService.getOffers()) {
+            offer.toJson();
             offerCount++;
         }
         String json = "[";
