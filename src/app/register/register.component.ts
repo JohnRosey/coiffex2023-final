@@ -4,9 +4,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../models/User';
 
-import { UsersService } from '../users.service';
-import {AuthService} from "../auth.service";
-
+import { AuthService } from "../auth.service";
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -25,12 +23,12 @@ export class RegisterComponent {
   });
   //Fiels of the form
 
-  constructor( public router: Router,private authservice :AuthService) { }
+  constructor(public router: Router, private service: UsersService) { }
 
   public register(): void {
-    if(this.form.valid) {
+    if (this.form.valid) {
 
-      
+
       let newUser: User = {
         id: Math.random(), //Not optimal, will be improved with backend
         username: this.form.value.username,
@@ -40,23 +38,12 @@ export class RegisterComponent {
         offers: [],
         reservations: []
       };
-<<<<<<< src/app/register/register.component.ts
-
-      this.authservice.register(newUser.username,newUser.email,newUser.passwordHash).subscribe(data=>{
-=======
       //Create a new user with the values of the form
-  
+
       this.service.addUser(newUser);
->>>>>>> src/app/register/register.component.ts
       alert('Inscription réussie ! Bienvenue ' + newUser.username + ' !');
       this.router.navigate(['/login']);
-    },
-    (error)=>{
-      console.log(error);
-      alert('Inscription échouée !');
     }
-    );
-}
-}
+  }
 }
 

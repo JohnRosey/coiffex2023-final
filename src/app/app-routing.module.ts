@@ -10,11 +10,9 @@ import { ReservationConfirmedComponent } from './reservation-confirmed/reservati
 import { LogoutComponent } from './logout/logout.component';
 
 import { AuthGuard } from './auth-guard';
-import {TeamComponent} from "./team/team.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
-  {path:'team', component:TeamComponent},
   {path:'offers', component:OffersComponent},
   {path:'offers/:id', component:OfferDetailsComponent},
   {path:'register', component:RegisterComponent},

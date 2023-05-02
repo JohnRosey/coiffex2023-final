@@ -11,7 +11,7 @@ import com.inf1013.example1.backend.services.implementation.OfferService;
 
 @RestController
 @RequestMapping("/api/offer")
-@CrossOrigin(origins = "https://coiffex.store")
+@CrossOrigin(origins = {"https://coiffex.store", "http://localhost:4200"})
 public class OfferController {
 
     @Autowired
@@ -36,5 +36,5 @@ public class OfferController {
         return json;
     }
 
-    
+
 }
