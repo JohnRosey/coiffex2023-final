@@ -1,5 +1,6 @@
 package com.inf1013.example1.backend.controllers;
 
+import com.inf1013.example1.backend.configuration.UserAuthenticationProvider;
 import org.springframework.web.bind.annotation.*;
 
 import com.inf1013.example1.backend.dto.UserLogin;
@@ -23,6 +24,9 @@ public class UserController {
     @Autowired
     private AuthentificationService authentificationService;
 
+    @Autowired
+    private UserAuthenticationProvider userAuthenticationProvider;
+
     /**
      * Register a new user
      * @param username
@@ -40,7 +44,7 @@ public class UserController {
         user.setEmail(email);
         user.setPassword(password);
         user.setAccountType(accountType);
-            
+
 
         return authentificationService.createUser(user);
     }
@@ -55,10 +59,15 @@ public class UserController {
     public String login(@RequestParam(value="username") String username,
                         @RequestParam(value="password") String password) {
 
+      System.out.println("login");
+      System.out.println(username);
+      System.out.println(password);
+
         UserLogin user = new UserLogin();
         user.setUsername(username);
         user.setPassword(password);
 
-        return authentificationService.login(user);
+        String token = userAuthenticationProvider.createToken(username);
+        return token;
     }
 }
