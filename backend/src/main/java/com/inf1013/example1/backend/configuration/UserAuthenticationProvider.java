@@ -49,6 +49,9 @@ public class UserAuthenticationProvider {
   }
 
   public Authentication validateToken(String token) {
+
+    System.out.println("Token :" + token);
+
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
     JWTVerifier verifier = JWT.require(algorithm)
@@ -58,7 +61,14 @@ public class UserAuthenticationProvider {
 
     Optional<User> user = authenticationService.findByUsername(decoded.getIssuer());
 
-    return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
+    System.out.println("User :" + user);
+
+    if (user.isEmpty()) {
+      throw new RuntimeException("User not found");
+    }
+
+    System.out.println(new UsernamePasswordAuthenticationToken(user, user, Collections.emptyList()));
+    return new UsernamePasswordAuthenticationToken(user, user, Collections.emptyList());
   }
 
   public Authentication validateCredentials(UserLogin userLogin) {
@@ -68,6 +78,7 @@ public class UserAuthenticationProvider {
     System.out.println("userLogin.getPassword() = " + userLogin.getPassword());
 
     String user = authenticationService.login(userLogin);
+    System.out.println("user = " + user);
     return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
   }
 

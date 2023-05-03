@@ -26,10 +26,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     String header = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
 
     if (header != null) {
+
+      System.out.println("header: " + header);
+
       String[] authElements = header.split(" ");
 
       if (authElements.length == 2
         && "Bearer".equals(authElements[0])) {
+
+        System.out.println("header: " + header);
+
         try {
           SecurityContextHolder.getContext().setAuthentication(
             userAuthenticationProvider.validateToken(authElements[1]));
@@ -40,6 +46,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
       }
     }
+
+    //Log the request
+    System.out.println("Request: " + httpServletRequest.getMethod() + " " + httpServletRequest.getRequestURI());
+
+    //Log the result of the auth
+    System.out.println("Auth: " + SecurityContextHolder.getContext().getAuthentication());
+
 
     filterChain.doFilter(httpServletRequest, httpServletResponse);
   }

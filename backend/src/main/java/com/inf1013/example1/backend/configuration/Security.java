@@ -47,6 +47,7 @@ public class Security {
           .requestMatchers(HttpMethod.POST,
             "/api/user/register",
             "/api/user/login"
+
           ).permitAll()
           .requestMatchers(HttpMethod.GET,
             "/api/offer/all"

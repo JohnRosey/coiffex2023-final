@@ -70,4 +70,9 @@ public class UserController {
         String token = userAuthenticationProvider.createToken(username);
         return token;
     }
+
+    @GetMapping(value="/details")
+    public String details() {
+        return "User details";
+    }
 }
