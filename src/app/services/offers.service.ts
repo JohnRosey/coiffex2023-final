@@ -11,7 +11,7 @@ import { Offer } from '../models/Offer';
 export class OffersService {
 
   // URL de l'API externe
-  private apiURL = 'http://localhost:8080/api/offer/all'; 
+  private apiURL = 'https://coiffex.store/api/offer/all'; 
 
   constructor(private http: HttpClient) { }
 
