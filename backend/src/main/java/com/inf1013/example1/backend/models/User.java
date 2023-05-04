@@ -22,6 +22,7 @@ public class User {
     private String username = "";
     private String email = "";
     private String password = "";
+    private String accountType = "";
 
     private final LocalDateTime creationDate = LocalDateTime.now(); 
     // The date when the user was created

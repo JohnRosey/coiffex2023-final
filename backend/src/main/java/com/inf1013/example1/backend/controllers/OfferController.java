@@ -11,7 +11,7 @@ import com.inf1013.example1.backend.services.implementation.OfferService;
 
 @RestController
 @RequestMapping("/api/offer")
-@CrossOrigin(origins = "https://coiffex.store")
+@CrossOrigin(origins = {"https://coiffex.store", "http://localhost:4200"})
 public class OfferController {
 
     @Autowired
@@ -22,6 +22,7 @@ public class OfferController {
 
         int offerCount = 0;
         for (Offer offer : offerService.getOffers()) {
+            offer.toJson();
             offerCount++;
         }
         String json = "[";
@@ -35,5 +36,5 @@ public class OfferController {
         return json;
     }
 
-    
+
 }
