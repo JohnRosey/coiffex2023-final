@@ -1,23 +1,44 @@
-<div id="login-content">
-<div class="w-full max-w-xs">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" [formGroup]="this.form" (submit)="this.login()">
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-          Nom d'utilisateur
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" formControlName="username">
+
+<!-- Container for demo purpose -->
+<div class="container my-24 px-6 mx-auto">
+
+  <!-- Section: Design Block -->
+  <section class="mb-32 text-gray-800 center-form">
+
+    <!-- Jumbotron -->
+    <div class="container mx-auto xl:px-32 text-center lg:text-left">
+      <div class="grid lg:grid-cols-2 flex items-center">
+        <div class="mb-12 lg:mb-0">
+          <form class="block rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14" [formGroup]="this.form" (submit)="this.login()"
+               style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px)">
+            <h2 class="text-3xl font-bold mb-6 pb-2">Connexion</h2>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Nom d'utilisateur
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" formControlName="username">
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Mot de passe
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" formControlName="password">
+            </div>
+            <div class="flex items-center justify-between">
+              <input  type="submit" (click)="this.login()" [disabled]="!this.form.valid"  [ngClass]="{'disabled:opacity-25': !this.form.valid }" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" value="Connexion">
+            </div>
+            <br>
+            <span>Pas de compte ? <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="/register">Inscrivez-vous</a></span>
+          </form>
+        </div>
+
+        
       </div>
-      <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-          Mot de passe
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" formControlName="password">
-      </div>
-      <div class="flex items-center justify-between">
-        <input  type="submit" (click)="this.login()" [disabled]="!this.form.valid"  [ngClass]="{'disabled:opacity-25': !this.form.valid }" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" value="Connexion">
-      </div>
-      <br>
-      <span>Pas de compte ? <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="/register">Inscrivez-vous</a></span>
-    </form>
-  </div>
+    </div>
+
+
+  </section>
+
+
 </div>
+

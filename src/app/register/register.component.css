@@ -8,3 +8,18 @@
 #submit {
     margin-bottom: 20px;
 }
+
+section {
+    background-image: url('https://images.pexels.com/photos/3162022/pexels-photo-3162022.jpeg?auto=compress&cs=tinysrgb&w=1920&h=750&dpr=1');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    height: 100vh;
+  }
+  .center-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
