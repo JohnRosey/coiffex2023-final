@@ -1,5 +1,6 @@
 package com.inf1013.example1.backend.repositories;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -32,4 +33,7 @@ public interface UserRepository extends CrudRepository<User, String> {
      * @return The user with the given username
      */
     Optional<User> findUserByUsername(@PathVariable String username);
+
+  @Query(value = "SELECT id FROM users WHERE username = ?1", nativeQuery = true)
+  Long findIdByUsername(String username);
 }

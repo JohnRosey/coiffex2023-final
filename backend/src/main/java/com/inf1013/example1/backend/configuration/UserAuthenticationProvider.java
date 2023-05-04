@@ -9,6 +9,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.inf1013.example1.backend.dto.UserTokenCreation;
 import com.inf1013.example1.backend.services.implementation.AuthentificationService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,13 +37,14 @@ public class UserAuthenticationProvider {
     secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
   }
 
-  public String createToken(String login) {
+  public String createToken(UserTokenCreation userTokenCreation) {
     Date now = new Date();
     Date validity = new Date(now.getTime() + 3600000); // 1 hour
 
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
     return JWT.create()
-      .withIssuer(login)
+      .withIssuer(userTokenCreation.getUsername())
+      .withClaim("user_id", userTokenCreation.getUserId())
       .withIssuedAt(now)
       .withExpiresAt(validity)
       .sign(algorithm);
@@ -61,13 +63,10 @@ public class UserAuthenticationProvider {
 
     Optional<User> user = authenticationService.findByUsername(decoded.getIssuer());
 
-    System.out.println("User :" + user);
-
     if (user.isEmpty()) {
       throw new RuntimeException("User not found");
     }
 
-    System.out.println(new UsernamePasswordAuthenticationToken(user, user, Collections.emptyList()));
     return new UsernamePasswordAuthenticationToken(user, user, Collections.emptyList());
   }
 
@@ -77,8 +76,8 @@ public class UserAuthenticationProvider {
     System.out.println("userLogin.getUsername() = " + userLogin.getUsername());
     System.out.println("userLogin.getPassword() = " + userLogin.getPassword());
 
-    String user = authenticationService.login(userLogin);
-    System.out.println("user = " + user);
+    User user = authenticationService.login(userLogin);
+    System.out.println("User :" + user);
     return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
   }
 

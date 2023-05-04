@@ -2,6 +2,7 @@ package com.inf1013.example1.backend.services;
 
 import com.inf1013.example1.backend.dto.UserLogin;
 import com.inf1013.example1.backend.dto.UserRegistration;
+import com.inf1013.example1.backend.models.User;
 
 /**
  * This interface represents the authentification service.
@@ -21,5 +22,5 @@ public interface AuthentificationServiceInterface {
      * @param userLogin
      * @return
      */
-    String login(UserLogin userLogin);
+    User login(UserLogin userLogin);
 }

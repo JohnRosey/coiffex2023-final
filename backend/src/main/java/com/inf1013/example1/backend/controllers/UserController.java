@@ -1,6 +1,10 @@
 package com.inf1013.example1.backend.controllers;
 
 import com.inf1013.example1.backend.configuration.UserAuthenticationProvider;
+import com.inf1013.example1.backend.dto.UserTokenCreation;
+import com.inf1013.example1.backend.models.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import com.inf1013.example1.backend.dto.UserLogin;
@@ -8,6 +12,9 @@ import com.inf1013.example1.backend.dto.UserRegistration;
 import com.inf1013.example1.backend.services.implementation.AuthentificationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -59,20 +66,31 @@ public class UserController {
     public String login(@RequestParam(value="username") String username,
                         @RequestParam(value="password") String password) {
 
-      System.out.println("login");
-      System.out.println(username);
-      System.out.println(password);
+      Long userId = authentificationService.findIdByUsername(username);
 
-        UserLogin user = new UserLogin();
-        user.setUsername(username);
-        user.setPassword(password);
+      UserTokenCreation userTokenCreation = new UserTokenCreation();
+      userTokenCreation.setUsername(username);
+      userTokenCreation.setUserId(userId);
 
-        String token = userAuthenticationProvider.createToken(username);
-        return token;
+      String token = userAuthenticationProvider.createToken(userTokenCreation);
+      return token;
     }
 
     @GetMapping(value="/details")
-    public String details() {
-        return "User details";
+    public String details(Authentication authentication) {
+
+      Optional<User> user = (Optional<User>) authentication.getPrincipal();
+
+      if(user.isPresent()) {
+        //Return all users info to json format
+        return "{" +
+          "\"username\": \"" + user.get().getUsername() + "\"," +
+          "\"email\": \"" + user.get().getEmail() + "\"," +
+          "\"accountType\": \"" + user.get().getAccountType() + "\"" +
+          "\"creationDate\": \"" + user.get().getCreationDate() + "\"" +
+        "}";
+      }
+
+      return "Error";
     }
 }

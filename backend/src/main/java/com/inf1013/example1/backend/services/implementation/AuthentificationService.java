@@ -40,11 +40,7 @@ public class AuthentificationService implements AuthentificationServiceInterface
     }
 
     @Override
-    public String login(UserLogin userLogin) {
-
-        System.out.println("AuthService :");
-        System.out.println("userLogin.getUsername() = " + userLogin.getUsername());
-        System.out.println("userLogin.getPassword() = " + userLogin.getPassword());
+    public User login(UserLogin userLogin) {
 
         if(!userRepository.findUserByUsername(userLogin.getUsername()).isPresent()) {
           System.out.println("User not found");
@@ -59,10 +55,18 @@ public class AuthentificationService implements AuthentificationServiceInterface
         }
 
         System.out.println("User found");
-        return "Welcome back " + userLogin.getUsername() + " !";
+        return user;
     }
 
     public Optional<User> findByUsername(String username) {
         return userRepository.findUserByUsername(username);
     }
+
+    public Long findIdByUsername(String username) {
+        return userRepository.findIdByUsername(username);
+    }
+
+  public User findById(Long id) {
+    return userRepository.findUserById(id).get();
+  }
 }
