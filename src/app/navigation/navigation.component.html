@@ -1,19 +1,19 @@
-
-<header>
-    <nav>
-        <div id="logo-title-container">
-            <img id="logo" src="assets/logo_transparent.webp" alt="Logo de CoiffeX">
-            <h5 id="title">CoiffeX</h5>
-        </div>
-        <div id="nav-links-container">
-            <ul>
-                <li><a routeLinkActive="true" [routerLink]="'/'">Accueil</a></li>
-                <li><a routeLinkActive="true" [routerLink]="'/offers'">Offres</a></li>
-                <li *ngIf="!this.isLoggedIn()"><a routeLinkActive="true" [routerLink]="'/register'" >Inscription</a></li>
-                <li *ngIf="!this.isLoggedIn()"><a routeLinkActive="true" [routerLink]="'/login'">Connexion</a></li>
-                <li *ngIf="this.isLoggedIn()"><a routeLinkActive="true" [routerLink]="'/logout'">Déconnexion</a></li>
-            </ul>
-        </div>
+<header class="fixed top-0 left-0 w-full">
+    <nav class="flex items-center justify-between flex-wrap bg-black p-6 fixed w-full z-10 top-0">
+      <div  class="flex items-center">
+        <img  class="h-10 mr-14" src="assets/logo_transparent.webp" alt="Logo de CoiffeX">
+        <h5  class="text-white text-3xl">CoiffeX</h5>
+      </div>
+      <div >
+        <ul class="flex items-center space-x-4">
+          <li><a class="text-white text-lg hover:bg-gray-700 px-2 py-1 rounded" routeLinkActive="true" [routerLink]="'/'">Accueil</a></li>
+          <li><a class="text-white text-lg hover:bg-gray-700 px-2 py-1 rounded" routeLinkActive="true" [routerLink]="'/offers'">Offres</a></li>
+          <li *ngIf="!this.isLoggedIn()"><a class="text-white text-lg hover:bg-gray-700 px-2 py-1 rounded" routeLinkActive="true" [routerLink]="'/register'">Inscription</a></li>
+          <li *ngIf="!this.isLoggedIn()"><a class="text-white text-lg hover:bg-gray-700 px-2 py-1 rounded" routeLinkActive="true" [routerLink]="'/login'">Connexion</a></li>
+          <li *ngIf="this.isLoggedIn()"><a class="text-white text-lg hover:bg-gray-700 px-2 py-1 rounded" routeLinkActive="true" [routerLink]="'/logout'">Déconnexion</a></li>
+        </ul>
+      </div>
     </nav>
-</header>
+  </header>
+  
 

@@ -1,52 +1,5 @@
-header{
-    top: 0;
-    width: 100%;
-    position: fixed;
-}
-
-nav {
-    height: 15vh;
-    color: white;
-    background-color: #202020;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-ul {
-    height: 100%;
-    display: flex;
-    list-style: none;
-    align-items: center;
-    flex-direction: row;
-}
-
-ul > li {
-    font-size: 1.5em;
-    padding: 0.7em;
-}
-
-ul > li:hover {
-    transition: 0.4s;
-    text-decoration: underline;
-    background-color: #404040;
-}
-
-#title {
-    font-size: 3em;
-}
-
-#logo-title-container {
-    width: 80%;
-    display: flex;
-
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-}
 
 #logo {
-    height: 15vh;
+    height: 6vh;
 }
 
