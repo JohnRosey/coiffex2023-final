@@ -34,9 +34,12 @@ public class UsernamePasswordFilter extends OncePerRequestFilter {
     if ("/api/user/login".equals(httpServletRequest.getServletPath())
       && HttpMethod.POST.matches(httpServletRequest.getMethod())) {
 
-        UserLogin userLogin = MAPPER.readValue(
-          httpServletRequest.getInputStream(),
-          UserLogin.class);
+        String username = httpServletRequest.getParameter("username");
+        String password = httpServletRequest.getParameter("password");
+
+        UserLogin userLogin = new UserLogin();
+        userLogin.setUsername(username);
+        userLogin.setPassword(password);
 
       try {
         SecurityContextHolder.getContext().setAuthentication(
