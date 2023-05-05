@@ -21,4 +21,7 @@ public class OfferService implements OfferServiceInterface {
         return offerRepository.findAll();
     }
 
+  public void createOffer(Offer offer) {
+    offerRepository.save(offer);
+  }
 }

@@ -60,4 +60,27 @@
             <column name="account_type" value="client"/>
         </update>
     </changeSet>
+    <changeSet id="4" author="quentin">
+        <validCheckSum>ANY</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="bookings"/>
+            </not>
+        </preConditions>
+        <createTable tableName="bookings">
+            <column name="id" type="serial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="offer_id" type="serial">
+                <constraints nullable="false" foreignKeyName="fk_offer_id" references="offers(id)"/>
+            </column>
+            <column name="client_id" type="serial">
+                <constraints nullable="false" foreignKeyName="fk_client_id" references="users(id)"/>
+            </column>
+            <column name="location" type="varchar"/>
+            <column name="date" type="varchar"/>
+            <column name="hour" type="varchar"/>
+            <column name="status" type="varchar"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
