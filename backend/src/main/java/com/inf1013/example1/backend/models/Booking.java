@@ -34,4 +34,7 @@ public class Booking {
         "}";
     }
 
+  public void setValidated(boolean b) {
+      this.status = "validated";
+  }
 }

@@ -5,11 +5,10 @@ import com.inf1013.example1.backend.models.User;
 import com.inf1013.example1.backend.services.implementation.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -44,4 +43,30 @@ public class BookingController {
     return "Error";
   }
 
+  @GetMapping(value="/my-bookings")
+  public List<Booking> getBookingsByHairdresserId(Authentication authentication) {
+
+    Optional<User> user = (Optional<User>) authentication.getPrincipal();
+
+    if(user.isPresent() && user.get().getAccountType().equals("hairdresser")) {
+      System.out.println("Hairdresser id: " + user.get().getId());
+
+      return bookingService.getBookingsByHairdresserId(user.get().getId());
+    }
+
+    System.out.println("Error");
+
+    return null;
+  }
+
+  @PostMapping(value="/validate")
+  public void validateBooking(Authentication authentication, @RequestParam(value="bookingId") Long bookingId) {
+
+    Optional<User> user = (Optional<User>) authentication.getPrincipal();
+
+    if(user.isPresent() && user.get().getAccountType().equals("hairdresser")) {
+
+      bookingService.validateBooking(bookingId);
+    }
+  }
 }
